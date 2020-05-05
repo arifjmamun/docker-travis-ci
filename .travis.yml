@@ -5,3 +5,12 @@ services:
 script:
   - docker build -t arifjmamun/node .
   - docker images arifjmamun/node
+
+before_deploy:
+  - docker login -u arifjmamun -p nokia523324
+
+deploy:
+  provider: script
+  script: docker push arifjmamun/node
+  on:
+    branch: master
